@@ -259,7 +259,8 @@ export default function Home() {
     const revenue = revenue6M2026 + h2Revenue2025 * (1 + h2Growth);
     const pat = revenue * (patPlan / fy2026Plan);
     const achievement = revenue / fy2026Plan;
-    const variance = revenue - fy2026Plan;
+    const rawVariance = revenue - fy2026Plan;
+    const variance = Math.abs(rawVariance) < 0.5 ? 0 : rawVariance;
     return { revenue, pat, achievement, variance };
   }, [h2Growth]);
 
@@ -335,8 +336,9 @@ export default function Home() {
         </a>
       </header>
 
-      <section className="hero section-shell" id="top">
-        <div className="hero-copy">
+      <div className="hero-stage">
+        <section className="hero section-shell" id="top">
+          <div className="hero-copy">
           <div className="eyebrow-row">
             <span className="status-dot" />
             <span>Public-data FP&amp;A work sample</span>
@@ -365,9 +367,9 @@ export default function Home() {
             <div><strong>1</strong><span>live PivotTable</span></div>
             <div><strong>19</strong><span>formula exercises</span></div>
           </div>
-        </div>
+          </div>
 
-        <div className="hero-panel" aria-label="FY2026 scenario summary">
+          <div className="hero-panel" aria-label="FY2026 scenario summary">
           <div className="panel-topline">
             <span>FY2026 live plan</span>
             <span className="live-pill">Formula-linked</span>
@@ -418,8 +420,9 @@ export default function Home() {
             Reported 6M2026 revenue + scenario-based H2 estimate. Base is calibrated to
             MWG&apos;s official revenue and PAT targets.
           </p>
-        </div>
-      </section>
+          </div>
+        </section>
+      </div>
 
       <section className="ticker">
         <div><span>FY2025 revenue</span><strong>155,928</strong><em>+4.0% vs plan</em></div>
