@@ -181,22 +181,22 @@ const formulaLibrary: Record<FormulaName, { purpose: string; formula: string; us
 const previewLibrary: Record<PreviewName, { label: string; src: string; caption: string }> = {
   dashboard: {
     label: "Dashboard",
-    src: "/previews/dashboard.png",
+    src: "./previews/dashboard.png",
     caption: "Management-facing KPI cards and formula-linked charts.",
   },
   variance: {
     label: "Variance",
-    src: "/previews/variance.png",
+    src: "./previews/variance.png",
     caption: "Actual vs Budget with driver, impact and recommended action.",
   },
   forecast: {
     label: "Forecast",
-    src: "/previews/forecast.png",
+    src: "./previews/forecast.png",
     caption: "Monthly FY2026 rolling forecast with Bear/Base/Bull scenario logic.",
   },
   practice: {
     label: "Practice Lab",
-    src: "/previews/practice.png",
+    src: "./previews/practice.png",
     caption: "Nineteen formula exercises with automatic grading.",
   },
 };
@@ -309,7 +309,7 @@ export default function Home() {
           <a href="#model">Model</a>
           <a href="#evidence">Evidence</a>
         </nav>
-        <a className="download-link compact" href="/downloads/MWG_FPA_Showcase_Final.xlsx" download>
+        <a className="download-link compact" href="./downloads/MWG_FPA_Showcase_Final.xlsx" download>
           <AppIcon name="download" /> Excel model
         </a>
       </header>
@@ -334,7 +334,7 @@ export default function Home() {
             <a className="primary-button" href="#forecast-lab">
               Open scenario lab <AppIcon name="arrow" />
             </a>
-            <a className="secondary-button" href="/downloads/MWG_FPA_Showcase_Final.xlsx" download>
+            <a className="secondary-button" href="./downloads/MWG_FPA_Showcase_Final.xlsx" download>
               Download workbook <AppIcon name="download" />
             </a>
           </div>
@@ -725,7 +725,7 @@ export default function Home() {
             <span className="section-index">06 / WORKBOOK EVIDENCE</span>
             <h2>Not a mockup. The underlying Excel file is the deliverable.</h2>
           </div>
-          <a className="primary-button" href="/downloads/MWG_FPA_Showcase_Final.xlsx" download>
+          <a className="primary-button" href="./downloads/MWG_FPA_Showcase_Final.xlsx" download>
             Download Excel <AppIcon name="download" />
           </a>
         </div>
@@ -767,7 +767,7 @@ export default function Home() {
               financial modelling and management-reporting skills.
             </p>
           </div>
-          <a className="closing-download" href="/downloads/MWG_FPA_Showcase_Final.xlsx" download>
+          <a className="closing-download" href="./downloads/MWG_FPA_Showcase_Final.xlsx" download>
             <span>Get the full workbook</span>
             <strong>MWG_FP&amp;A_Model.xlsx</strong>
             <AppIcon name="download" />
