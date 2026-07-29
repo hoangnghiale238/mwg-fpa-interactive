@@ -2754,6 +2754,11 @@ footer a {
   padding: 18px;
 }
 
+.driver-detail {
+  background: #171717;
+  color: #ffffff;
+}
+
 .model-flow {
   gap: 8px;
 }
