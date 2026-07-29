@@ -1813,6 +1813,287 @@ footer a {
   margin-top: -38px;
 }
 
+/* Simplified portfolio treatment:
+   preserve the information architecture while reducing visual noise. */
+:root {
+  --ink: #17212b;
+  --muted: #64717c;
+  --line: #d9e0e5;
+  --paper: #f7f9fa;
+  --navy: #17364a;
+  --teal: #27796f;
+  --teal-dark: #1d625a;
+  --lime: #cfe3dc;
+  --orange: #b8732b;
+  --red: #aa4f5e;
+  --positive: #26755f;
+  --negative: #a84959;
+}
+
+body {
+  background: var(--paper);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+}
+
+.section-shell {
+  width: min(1240px, 92vw);
+}
+
+.scroll-progress {
+  height: 2px;
+  background: var(--teal);
+}
+
+.topbar {
+  min-height: 68px;
+  border-bottom-color: var(--line);
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: none;
+}
+
+.brand-mark {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--navy);
+  color: var(--white);
+}
+
+.download-link.compact,
+.primary-button,
+.secondary-button {
+  border-radius: 8px;
+}
+
+.primary-button,
+.secondary-button {
+  min-height: 48px;
+  transition: background 140ms ease, border-color 140ms ease, color 140ms ease;
+}
+
+.primary-button {
+  box-shadow: none;
+}
+
+.primary-button:hover,
+.secondary-button:hover {
+  transform: none;
+}
+
+.secondary-button {
+  background: var(--white);
+}
+
+.hero {
+  min-height: auto;
+  padding-top: 88px;
+  padding-bottom: 88px;
+}
+
+.hero h1 {
+  margin-top: 22px;
+  font-size: clamp(50px, 5.4vw, 76px);
+  font-weight: 650;
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.hero-lede {
+  max-width: 660px;
+  color: #4f5d66;
+  font-size: clamp(16px, 1.25vw, 19px);
+  line-height: 1.6;
+}
+
+.hero-proof {
+  margin-top: 46px;
+}
+
+.status-dot {
+  box-shadow: none;
+}
+
+.hero-panel {
+  padding: 28px;
+  border-color: rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  background: var(--navy);
+  box-shadow: none;
+}
+
+.segmented-control,
+.view-tabs,
+.preview-tabs {
+  border-radius: 9px;
+}
+
+.segmented-control button,
+.view-tabs button,
+.preview-tabs button {
+  border-radius: 6px;
+}
+
+.plan-track,
+.driver-track,
+.bar-track,
+input[type="range"] {
+  border-radius: 4px;
+}
+
+.ticker {
+  background: var(--white);
+}
+
+.ticker div {
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+.ticker strong {
+  font-size: 21px;
+}
+
+.performance-section,
+.variance-section,
+.working-capital-section,
+.evidence-section,
+.model-section,
+.dark-section {
+  padding-top: 92px;
+  padding-bottom: 92px;
+}
+
+.section-heading {
+  margin-bottom: 36px;
+}
+
+.section-heading h2 {
+  max-width: 760px;
+  font-size: clamp(34px, 3.7vw, 52px);
+  letter-spacing: -0.045em;
+  line-height: 1.08;
+}
+
+.performance-layout {
+  gap: 54px;
+  padding-top: 34px;
+}
+
+.performance-summary h3 {
+  font-size: clamp(26px, 2.6vw, 38px);
+  letter-spacing: -0.035em;
+}
+
+.management-question {
+  padding: 17px 18px;
+  background: #edf5f2;
+}
+
+.metric-card,
+.bu-panel,
+.forecast-controls,
+.monthly-chart,
+.driver-detail,
+.wc-grid,
+.model-flow article,
+.formula-lab,
+.preview-frame,
+.evidence-grid article,
+.closing-download {
+  border-radius: 12px;
+}
+
+.metric-card {
+  min-height: 172px;
+  padding: 22px;
+  background: var(--white);
+}
+
+.metric-card strong {
+  margin-top: 18px;
+  font-size: 36px;
+}
+
+.metric-card em,
+.scenario-badge,
+.live-pill,
+.signal,
+.ccc-badge {
+  border-radius: 6px;
+}
+
+.bu-selector button,
+.preset-row button,
+.formula-list button,
+.reveal-button {
+  border-radius: 7px;
+}
+
+.dark-section {
+  background: var(--navy);
+}
+
+.section-heading.light .section-index,
+.scenario-badge,
+.hero-panel .good,
+.formula-chip span,
+footer a {
+  color: #b9d8cf;
+}
+
+.forecast-controls,
+.monthly-chart {
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.preset-row button.active {
+  border-color: #9bc7bb;
+  background: rgba(155, 199, 187, 0.12);
+  color: #d6ebe5;
+}
+
+.formula-chip {
+  border-left-color: #9bc7bb;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.forecast-key {
+  background: #a9d2c7;
+}
+
+.chart-area {
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 74px,
+    rgba(255, 255, 255, 0.045) 75px
+  );
+}
+
+.closing-section {
+  padding: 72px 0;
+  background: #dcebe6;
+}
+
+.closing-inner h2 {
+  font-size: clamp(38px, 4.3vw, 62px);
+  letter-spacing: -0.05em;
+}
+
+.closing-download > span:last-child {
+  color: #b9d8cf;
+}
+
+.modal-backdrop {
+  background: rgba(17, 28, 35, 0.76);
+  backdrop-filter: none;
+}
+
+.preview-modal {
+  border-radius: 12px;
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.22);
+}
+
 @media (max-width: 1100px) {
   .topbar nav {
     display: none;
