@@ -3109,7 +3109,7 @@ footer {
 /* Small readability lift for dense card content. */
 .management-view-card__header span,
 .management-view-card__header small {
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .management-view-card h3 {
@@ -3117,11 +3117,11 @@ footer {
 }
 
 .management-metric-list b {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .management-metric-list small {
-  font-size: 9px;
+  font-size: 10px;
 }
 
 .management-metric-list strong {
@@ -3129,11 +3129,11 @@ footer {
 }
 
 .management-metric-list em {
-  font-size: 9px;
+  font-size: 10px;
 }
 
 .management-takeaway > span {
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .management-takeaway strong {
@@ -3141,7 +3141,7 @@ footer {
 }
 
 .management-takeaway p {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .driver-list button > span,
@@ -3154,16 +3154,16 @@ footer {
 }
 
 .driver-detail > div code {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .control-label span,
 .chart-header > div:first-child span {
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .forecast-output span {
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .forecast-output strong {
@@ -3172,7 +3172,7 @@ footer {
 
 .wc-output span,
 .wc-controls label > span {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .wc-explainer p {
@@ -3184,7 +3184,21 @@ footer {
 .formula-meta p,
 .preview-caption p,
 .evidence-grid article > span:last-child {
-  font-size: 12px;
+  font-size: 13px;
+}
+
+.bu-selector button,
+.share-ring span,
+.bu-commentary span,
+.formula-list > span,
+.panel-topline,
+.micro-note {
+  font-size: 11px;
+}
+
+.bu-bars > div > span,
+.bu-commentary p {
+  font-size: 14px;
 }
 
 @media (max-width: 1100px) {
