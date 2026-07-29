@@ -2759,14 +2759,16 @@ footer a {
 }
 
 .management-view-card__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
+  display: block;
+  margin: -16px -16px 0;
+  padding: 12px 14px;
+  border-radius: 7px 7px 0 0;
+  background: #171717;
 }
 
 .management-view-card__header span {
-  color: var(--teal-dark);
+  display: block;
+  color: var(--lime);
   font-size: 9px;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -2774,13 +2776,30 @@ footer a {
 }
 
 .management-view-card__header small {
-  color: var(--muted);
-  font-size: 9px;
+  display: block;
+  margin-top: 4px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+.management-view-card:nth-child(3) .management-view-card__header {
+  background: var(--lime);
+}
+
+.management-view-card:nth-child(3) .management-view-card__header span {
+  color: rgba(12, 12, 12, 0.62);
+}
+
+.management-view-card:nth-child(3) .management-view-card__header small {
+  color: #0c0c0c;
 }
 
 .management-view-card h3 {
   min-height: 42px;
-  margin: 11px 0 12px;
+  margin: 14px 0 12px;
   font-size: 17px;
   letter-spacing: -0.025em;
   line-height: 1.22;
@@ -3107,9 +3126,12 @@ footer {
 }
 
 /* Small readability lift for dense card content. */
-.management-view-card__header span,
-.management-view-card__header small {
+.management-view-card__header span {
   font-size: 11px;
+}
+
+.management-view-card__header small {
+  font-size: 15px;
 }
 
 .management-view-card h3 {
