@@ -2211,16 +2211,16 @@ footer a {
 
 /* MWG-reference design language, adapted to an FP&A work sample. */
 :root {
-  --ink: #121514;
-  --muted: #666b68;
-  --line: #d8d6cf;
-  --paper: #f4f3ee;
-  --navy: #161b19;
-  --teal: #18765f;
-  --teal-dark: #105c4a;
-  --lime: #75d1ae;
-  --positive: #18765f;
-  --negative: #b34754;
+  --ink: #0c0c0c;
+  --muted: #6f6a5f;
+  --line: #ded8c8;
+  --paper: #f7f5ef;
+  --navy: #171717;
+  --teal: #f0b800;
+  --teal-dark: #c49300;
+  --lime: #ffd200;
+  --positive: #18844f;
+  --negative: #b42318;
 }
 
 body {
@@ -2230,16 +2230,17 @@ body {
 
 .topbar {
   min-height: 64px;
-  border-bottom-color: rgba(117, 209, 174, 0.22);
-  background: #121413;
+  border-bottom-color: rgba(255, 210, 0, 0.22);
+  background: rgba(12, 12, 12, 0.94);
   color: var(--white);
+  backdrop-filter: blur(10px);
 }
 
 .brand-mark {
   width: 34px;
   height: 34px;
   background: var(--lime);
-  color: #101311;
+  color: #0c0c0c;
   font-size: 12px;
 }
 
@@ -2256,62 +2257,73 @@ body {
 }
 
 .download-link.compact {
-  border-color: rgba(117, 209, 174, 0.7);
+  border-color: rgba(255, 210, 0, 0.72);
   color: var(--lime);
 }
 
 .hero-stage {
   position: relative;
   overflow: hidden;
-  border-bottom: 1px solid rgba(18, 21, 20, 0.18);
-  background:
-    linear-gradient(90deg, #121615 0%, #263a33 48%, #dcebe5 100%);
+  border-bottom: 1px solid rgba(12, 12, 12, 0.18);
+  background-color: #efe0aa;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(12, 12, 12, 0.92),
+      rgba(12, 12, 12, 0.62) 40%,
+      rgba(12, 12, 12, 0.1) 72%,
+      rgba(12, 12, 12, 0.02)
+    ),
+    url("/hero-mwg-brand.png");
+  background-position: center, right center;
+  background-repeat: no-repeat;
+  background-size: cover, 93% auto;
 }
 
 .hero-stage::after {
-  position: absolute;
-  top: 50%;
-  right: 3vw;
-  content: "FP&A";
-  color: rgba(18, 21, 20, 0.12);
-  font-size: clamp(110px, 18vw, 270px);
-  font-weight: 850;
-  letter-spacing: -0.09em;
-  line-height: 0.8;
-  pointer-events: none;
-  transform: translateY(-46%);
+  display: none;
+  content: none;
 }
 
 .hero {
   position: relative;
   z-index: 1;
-  grid-template-columns: minmax(0, 1.16fr) minmax(330px, 0.74fr);
-  gap: clamp(30px, 4vw, 58px);
-  padding-top: 64px;
-  padding-bottom: 64px;
+  min-height: 82vh;
+  grid-template-columns: minmax(340px, 660px) minmax(280px, 420px);
+  gap: clamp(20px, 4vw, 42px);
+  padding-top: clamp(86px, 9vw, 118px);
+  padding-bottom: 54px;
 }
 
 .hero-copy,
 .hero-panel {
-  border: 1px solid rgba(117, 209, 174, 0.2);
-  border-radius: 10px;
-  background: rgba(17, 21, 19, 0.93);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
+  border-radius: 8px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.24);
 }
 
 .hero-copy {
-  padding: 34px;
+  padding: clamp(22px, 2.6vw, 30px);
+  border: 1px solid rgba(255, 210, 0, 0.22);
+  background:
+    linear-gradient(135deg, rgba(255, 210, 0, 0.06), rgba(255, 255, 255, 0.015)),
+    rgba(12, 12, 12, 0.7);
+  backdrop-filter: blur(3px);
 }
 
 .hero-panel {
   align-self: end;
-  padding: 25px;
+  padding: 22px;
+  border: 1px solid rgba(255, 210, 0, 0.46);
+  background:
+    linear-gradient(180deg, rgba(255, 210, 0, 0.06), rgba(255, 255, 255, 0.02)),
+    rgba(12, 12, 12, 0.86);
+  backdrop-filter: blur(5px);
 }
 
 .hero h1 {
   max-width: 760px;
   margin: 20px 0;
-  color: var(--white);
+  color: #ffffff;
   font-size: clamp(48px, 5vw, 72px);
   font-weight: 760;
   letter-spacing: -0.055em;
@@ -2319,6 +2331,10 @@ body {
 }
 
 .hero h1 span {
+  color: var(--lime);
+}
+
+.hero-metric strong {
   color: var(--lime);
 }
 
@@ -2344,7 +2360,7 @@ body {
 .hero-actions .primary-button {
   border-color: var(--lime);
   background: var(--lime);
-  color: #101311;
+  color: #0c0c0c;
 }
 
 .hero-actions .secondary-button {
@@ -2376,14 +2392,14 @@ body {
 
 .live-pill,
 .scenario-badge {
-  border-color: rgba(117, 209, 174, 0.48);
-  background: rgba(117, 209, 174, 0.08);
+  border-color: rgba(255, 210, 0, 0.48);
+  background: rgba(255, 210, 0, 0.08);
   color: var(--lime);
 }
 
 .segmented-control button.active {
   background: var(--lime);
-  color: #101311;
+  color: #0c0c0c;
 }
 
 .plan-track > div {
@@ -2392,7 +2408,7 @@ body {
 
 .ticker {
   border-color: var(--line);
-  background: #fbfaf7;
+  background: #fbfaf6;
 }
 
 .ticker div {
@@ -2407,7 +2423,7 @@ body {
 .module-switcher-shell {
   top: 64px;
   scroll-margin-top: 64px;
-  background: rgba(251, 250, 247, 0.98);
+  background: rgba(251, 250, 246, 0.98);
 }
 
 .module-switcher button {
@@ -2420,13 +2436,23 @@ body {
 
 .module-switcher button.active {
   border-bottom-color: var(--teal);
-  background: #e1eee9;
+  background: #fff7c9;
 }
 
 .workspace-panel {
   min-height: 610px;
   padding-top: 58px;
   padding-bottom: 66px;
+}
+
+.performance-section,
+.variance-section,
+.working-capital-section,
+.evidence-section,
+.model-section,
+.dark-section {
+  padding-top: 76px;
+  padding-bottom: 76px;
 }
 
 .section-heading {
@@ -2450,7 +2476,7 @@ body {
 .view-tabs,
 .preview-tabs {
   border-color: var(--line);
-  background: #fbfaf7;
+  background: #fbfaf6;
 }
 
 .view-tabs button.active,
@@ -2472,7 +2498,7 @@ body {
 .management-question {
   margin-top: 28px;
   border-left-color: var(--teal);
-  background: #e5efeb;
+  background: #fff7c9;
 }
 
 .metric-grid {
@@ -2490,7 +2516,8 @@ body {
 .evidence-grid article {
   border-color: var(--line);
   border-radius: 8px;
-  background: #fff;
+  background: #ffffff;
+  box-shadow: 0 18px 48px rgba(12, 12, 12, 0.08);
 }
 
 .metric-card {
@@ -2518,14 +2545,14 @@ body {
 }
 
 .dark-section {
-  background: #171a19;
+  background: #171717;
 }
 
 .forecast-controls,
 .monthly-chart {
   border-color: rgba(255, 255, 255, 0.14);
   border-radius: 8px;
-  background: #202421;
+  background: #252525;
 }
 
 .forecast-controls,
@@ -2539,12 +2566,22 @@ body {
 
 .preset-row button.active {
   border-color: var(--lime);
-  background: rgba(117, 209, 174, 0.12);
+  background: rgba(255, 210, 0, 0.12);
   color: var(--lime);
 }
 
 .forecast-key {
   background: var(--lime);
+}
+
+.section-heading.light .section-index,
+.hero-panel .good,
+.formula-chip span {
+  color: var(--lime);
+}
+
+.formula-chip {
+  border-left-color: var(--lime);
 }
 
 .driver-list {
@@ -2561,7 +2598,7 @@ body {
 }
 
 .model-section {
-  background: #ecebe5;
+  background: #ebe5d6;
 }
 
 .model-flow {
@@ -2578,7 +2615,7 @@ body {
 }
 
 .preview-frame {
-  background: #e9e8e1;
+  background: #f0ede5;
 }
 
 .evidence-grid {
@@ -2590,8 +2627,8 @@ body {
 }
 
 .closing-section {
-  border-top: 1px solid rgba(117, 209, 174, 0.18);
-  background: #171a19;
+  border-top: 1px solid rgba(255, 210, 0, 0.22);
+  background: #171717;
   color: var(--white);
 }
 
@@ -2604,8 +2641,8 @@ body {
 }
 
 .closing-download {
-  border-color: rgba(117, 209, 174, 0.48);
-  background: #242925;
+  border-color: rgba(255, 210, 0, 0.5);
+  background: #252525;
 }
 
 .closing-download > span:last-child {
@@ -2614,7 +2651,7 @@ body {
 
 footer {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  background: #101211;
+  background: #0c0c0c;
 }
 
 footer a {

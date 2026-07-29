@@ -6,7 +6,6 @@ type ScenarioName = "Bear" | "Base" | "Bull";
 type ViewName = "plan" | "yoy" | "forecast";
 type PreviewName = "dashboard" | "variance" | "forecast" | "practice";
 type FormulaName = "SUMIFS" | "XLOOKUP" | "F/U logic" | "Rolling forecast" | "Tolerance check";
-type ModuleName = "performance" | "forecast" | "variance" | "working-capital" | "model" | "evidence";
 
 const scenarioPresets: Record<ScenarioName, number> = {
   Bear: 0.0370671789,
@@ -21,15 +20,6 @@ const fy2026Plan = 185000;
 const patPlan = 9200;
 const revenue6M2026 = 95305;
 const h2Revenue2025 = 82511;
-
-const moduleNavigation: Array<{ key: ModuleName; number: string; label: string }> = [
-  { key: "performance", number: "01", label: "Performance" },
-  { key: "forecast", number: "02", label: "Forecast" },
-  { key: "variance", number: "03", label: "Variance" },
-  { key: "working-capital", number: "04", label: "Working capital" },
-  { key: "model", number: "05", label: "Model" },
-  { key: "evidence", number: "06", label: "Evidence" },
-];
 
 const businessUnits = [
   {
@@ -242,7 +232,6 @@ export default function Home() {
   const [activePreview, setActivePreview] = useState<PreviewName>("dashboard");
   const [previewOpen, setPreviewOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [activeModule, setActiveModule] = useState<ModuleName>("performance");
 
   useEffect(() => {
     const onScroll = () => {
@@ -303,16 +292,6 @@ export default function Home() {
   const currentFormula = formulaLibrary[activeFormula];
   const currentPreview = previewLibrary[activePreview];
 
-  const activateModule = (nextModule: ModuleName) => {
-    setActiveModule(nextModule);
-    window.requestAnimationFrame(() => {
-      document.getElementById("workspace")?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    });
-  };
-
   return (
     <main>
       <div className="scroll-progress" style={{ transform: `scaleX(${scrollProgress})` }} />
@@ -326,10 +305,10 @@ export default function Home() {
           </span>
         </a>
         <nav aria-label="Primary navigation">
-          <button type="button" onClick={() => activateModule("performance")}>Performance</button>
-          <button type="button" onClick={() => activateModule("forecast")}>Forecast</button>
-          <button type="button" onClick={() => activateModule("model")}>Model</button>
-          <button type="button" onClick={() => activateModule("evidence")}>Evidence</button>
+          <a href="#performance">Performance</a>
+          <a href="#forecast-lab">Forecast</a>
+          <a href="#model">Model</a>
+          <a href="#evidence">Evidence</a>
         </nav>
         <a className="download-link compact" href="./downloads/MWG_FPA_Showcase_Final.xlsx" download>
           <AppIcon name="download" /> Excel model
@@ -354,9 +333,9 @@ export default function Home() {
             planning and management actions.
           </p>
           <div className="hero-actions">
-            <button className="primary-button" type="button" onClick={() => activateModule("forecast")}>
+            <a className="primary-button" href="#forecast-lab">
               Open scenario lab <AppIcon name="arrow" />
-            </button>
+            </a>
             <a className="secondary-button" href="./downloads/MWG_FPA_Showcase_Final.xlsx" download>
               Download workbook <AppIcon name="download" />
             </a>
@@ -411,7 +390,7 @@ export default function Home() {
             <div>
               <span>Variance to plan</span>
               <strong className={scenarioMetrics.variance >= 0 ? "good" : "bad"}>
-                {scenarioMetrics.variance >= 0 ? "+" : ""}
+                {scenarioMetrics.variance > 0 ? "+" : ""}
                 {formatNumber(scenarioMetrics.variance)}
               </strong>
             </div>
@@ -431,33 +410,7 @@ export default function Home() {
         <div><span>FY2026 revenue plan</span><strong>185,000</strong><em>VND bn</em></div>
       </section>
 
-      <section className="module-switcher-shell" id="workspace">
-        <div className="module-switcher" role="tablist" aria-label="Project modules">
-          {moduleNavigation.map((module) => (
-            <button
-              type="button"
-              role="tab"
-              id={`${module.key}-tab`}
-              aria-selected={activeModule === module.key}
-              aria-controls={`${module.key}-panel`}
-              className={activeModule === module.key ? "active" : ""}
-              key={module.key}
-              onClick={() => activateModule(module.key)}
-            >
-              <span>{module.number}</span>
-              <strong>{module.label}</strong>
-            </button>
-          ))}
-        </div>
-      </section>
-
-      <section
-        className="section-shell performance-section workspace-panel"
-        id="performance-panel"
-        role="tabpanel"
-        aria-labelledby="performance-tab"
-        hidden={activeModule !== "performance"}
-      >
+      <section className="section-shell performance-section" id="performance">
         <div className="section-heading">
           <div>
             <span className="section-index">01 / PERFORMANCE</span>
@@ -551,13 +504,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        className="dark-section workspace-panel"
-        id="forecast-panel"
-        role="tabpanel"
-        aria-labelledby="forecast-tab"
-        hidden={activeModule !== "forecast"}
-      >
+      <section className="dark-section" id="forecast-lab">
         <div className="section-shell">
           <div className="section-heading light">
             <div>
@@ -624,13 +571,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        className="section-shell variance-section workspace-panel"
-        id="variance-panel"
-        role="tabpanel"
-        aria-labelledby="variance-tab"
-        hidden={activeModule !== "variance"}
-      >
+      <section className="section-shell variance-section" id="variance">
         <div className="section-heading">
           <div>
             <span className="section-index">03 / VARIANCE STORY</span>
@@ -674,13 +615,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        className="section-shell working-capital-section workspace-panel"
-        id="working-capital-panel"
-        role="tabpanel"
-        aria-labelledby="working-capital-tab"
-        hidden={activeModule !== "working-capital"}
-      >
+      <section className="section-shell working-capital-section" id="working-capital">
         <div className="section-heading">
           <div>
             <span className="section-index">04 / WORKING CAPITAL</span>
@@ -727,13 +662,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        className="model-section workspace-panel"
-        id="model-panel"
-        role="tabpanel"
-        aria-labelledby="model-tab"
-        hidden={activeModule !== "model"}
-      >
+      <section className="model-section" id="model">
         <div className="section-shell">
           <div className="section-heading">
             <div>
@@ -793,13 +722,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        className="section-shell evidence-section workspace-panel"
-        id="evidence-panel"
-        role="tabpanel"
-        aria-labelledby="evidence-tab"
-        hidden={activeModule !== "evidence"}
-      >
+      <section className="section-shell evidence-section" id="evidence">
         <div className="section-heading">
           <div>
             <span className="section-index">06 / WORKBOOK EVIDENCE</span>
