@@ -221,7 +221,6 @@ function AppIcon({ name }: { name: "arrow" | "download" | "check" | "grid" }) {
 export default function Home() {
   const [scenario, setScenario] = useState<ScenarioName>("Base");
   const [h2Growth, setH2Growth] = useState(scenarioPresets.Base);
-  const [activeView, setActiveView] = useState<ViewName>("plan");
   const [activeBu, setActiveBu] = useState(1);
   const [activeDriver, setActiveDriver] = useState(0);
   const [dso, setDso] = useState(0.6);
@@ -288,7 +287,6 @@ export default function Home() {
     if (exact) setScenario(exact[0]);
   };
 
-  const currentView = viewData[activeView];
   const currentFormula = formulaLibrary[activeFormula];
   const currentPreview = previewLibrary[activePreview];
 
@@ -416,39 +414,44 @@ export default function Home() {
             <span className="section-index">01 / PERFORMANCE</span>
             <h2>One model, three management views.</h2>
           </div>
-          <div className="view-tabs" role="tablist" aria-label="Performance view">
-            <button className={activeView === "plan" ? "active" : ""} onClick={() => setActiveView("plan")}>A vs B</button>
-            <button className={activeView === "yoy" ? "active" : ""} onClick={() => setActiveView("yoy")}>YoY</button>
-            <button className={activeView === "forecast" ? "active" : ""} onClick={() => setActiveView("forecast")}>FY2026F</button>
-          </div>
+          <p className="section-copy">Budget control, historical growth and rolling forecast in one view.</p>
         </div>
 
-        <div className="performance-layout">
-          <div className="performance-summary">
-            <span className="data-eyebrow">{currentView.eyebrow}</span>
-            <h3>{currentView.title}</h3>
-            <p>{currentView.takeaway}</p>
-            <div className="management-question">
-              <span>Management question</span>
-              <strong>
-                {activeView === "plan"
-                  ? "What really drove the earnings beat?"
-                  : activeView === "yoy"
-                    ? "Did scale improve operating productivity?"
-                    : "What H2 run-rate closes the FY2026 plan?"}
-              </strong>
-            </div>
-          </div>
-          <div className="metric-grid">
-            {currentView.metrics.map((metric) => (
-              <article className="metric-card" key={metric.label}>
-                <span>{metric.label}</span>
-                <strong>{metric.actual}</strong>
-                <small>vs {metric.comparison}</small>
-                <em className={metric.tone}>{metric.delta}</em>
+        <div className="management-view-grid">
+          {([
+            ["plan", "Budget control", "2025 Actual vs Budget"],
+            ["yoy", "Growth review", "2025 Actual vs 2024"],
+            ["forecast", "Rolling forecast", "2026 Forecast vs Plan"],
+          ] as const).map(([key, skill, label]) => {
+            const view = viewData[key];
+            return (
+              <article className="management-view-card" key={key}>
+                <div className="management-view-card__header">
+                  <span>{skill}</span>
+                  <small>{label}</small>
+                </div>
+                <h3>{view.title}</h3>
+                <div className="management-metric-list">
+                  {view.metrics.map((metric) => (
+                    <div key={metric.label}>
+                      <span>
+                        <b>{metric.label}</b>
+                        <small>vs {metric.comparison}</small>
+                      </span>
+                      <strong>{metric.actual}</strong>
+                      <em className={metric.tone}>{metric.delta}</em>
+                    </div>
+                  ))}
+                </div>
               </article>
-            ))}
-          </div>
+            );
+          })}
+        </div>
+
+        <div className="management-takeaway">
+          <span>Management takeaway</span>
+          <strong>FY2025 beat on operating leverage; FY2026 still requires an 8.7% H2 growth run-rate.</strong>
+          <p>Revenue and PAT outperformed budget and prior year, while gross-margin compression remains the main operating tension.</p>
         </div>
 
         <div className="bu-panel">
